@@ -1,8 +1,9 @@
 package com.example.hexagonalspringboot.adapter.incoming.presentation
 
-import com.example.hexagonalspringboot.application.port.incoming.MemberList
 import com.example.hexagonalspringboot.application.port.incoming.MemberUseCase
-import com.example.hexagonalspringboot.application.port.incoming.ShowMember
+import com.example.hexagonalspringboot.dto.MemberList
+import com.example.hexagonalspringboot.dto.ShowMember
+import com.example.hexagonalspringboot.dto.SignUp
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -16,8 +17,8 @@ class MemberController(private val memberUseCase: MemberUseCase) {
         return lists
     }
 
-//    @PostMapping("/login")
-//    public fun login(@RequestBody signIn: SignIn) : ResponseEntity<ShowMember> {
-//        return ResponseEntity.ok(MemberUseCase.login(signIn))
-//    }
+    @PostMapping("/register")
+    suspend fun signUp(@RequestBody signUp: SignUp) {
+        memberUseCase.register(signUp)
+    }
 }

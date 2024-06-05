@@ -1,6 +1,5 @@
 package com.example.hexagonalspringboot.adapter.out.persistence
 
-import com.example.hexagonalspringboot.application.port.out.MemberInformation
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import jakarta.persistence.*
 import org.springframework.security.core.GrantedAuthority
