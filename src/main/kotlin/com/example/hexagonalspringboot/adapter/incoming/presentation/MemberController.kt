@@ -1,10 +1,7 @@
 package com.example.hexagonalspringboot.adapter.incoming.presentation
 
 import com.example.hexagonalspringboot.application.port.incoming.MemberUseCase
-import com.example.hexagonalspringboot.dto.MemberList
-import com.example.hexagonalspringboot.dto.ShowMember
-import com.example.hexagonalspringboot.dto.SignUp
-import org.springframework.http.ResponseEntity
+import com.example.hexagonalspringboot.dto.*
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -20,5 +17,10 @@ class MemberController(private val memberUseCase: MemberUseCase) {
     @PostMapping("/register")
     suspend fun signUp(@RequestBody signUp: SignUp) {
         memberUseCase.register(signUp)
+    }
+
+    @PostMapping("/login")
+    suspend fun logIn(@RequestBody signIn: SignIn): JwtTokenDto {
+        return memberUseCase.login(signIn)
     }
 }

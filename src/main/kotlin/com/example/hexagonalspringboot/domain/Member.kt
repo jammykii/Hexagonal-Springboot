@@ -14,4 +14,10 @@ data class Member(
     val updateDate: LocalDateTime?,
     val roles: List<String>
 ) {
+    val accessTokenClaims: Map<String?, Any?>
+        get() = java.util.Map.of<String, Any?>(
+            "id", memberId,
+            "username", memberName,
+            "createDateTime", createDate.toString()
+        )
 }
